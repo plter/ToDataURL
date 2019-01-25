@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Covert to data url</title>
+    <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.css">
+</head>
+<body>
+<input type="file" id="file-filed" style="display: none;">
+<a href="#" class="btn btn-dark" onclick="$('#file-filed').click();">选择文件</a>
+<textarea id="output" style="width: 100%;height: 500px;"></textarea>
+
+<script>
+    // You can also require other files to run in this process
+    require('./renderer.js')
+</script>
+</body>
+</html>
