@@ -1,12 +1,13 @@
 {
-  "name": "electron-quick-start",
+  "name": "to-dataurl",
   "version": "1.0.0",
   "description": "A minimal Electron application",
   "main": "main.js",
   "scripts": {
-    "start": "electron ."
+    "start": "electron .",
+    "build": "electron-builder"
   },
-  "repository": "https://github.com/electron/electron-quick-start",
+  "repository": "https://github.com/plter/ToDataURL",
   "keywords": [
     "Electron",
     "quick",
@@ -14,10 +15,15 @@
     "tutorial",
     "demo"
   ],
+  "build": {
+    "appId": "top.yunp.todataurl",
+    "productName": "ToDataURL"
+  },
   "author": "GitHub",
   "license": "CC0-1.0",
   "devDependencies": {
-    "electron": "^4.0.1"
+    "electron": "^4.0.1",
+    "electron-builder": "^20.38.5"
   },
   "dependencies": {
     "bootstrap": "^4.2.1",
