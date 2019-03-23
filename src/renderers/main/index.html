@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html xmlns:v-on="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Covert to data url</title>
+    <link rel="stylesheet" href="../../../lib/fontawesome-free-5.6.3-web/css/all.css">
+    <link rel="stylesheet" href="../../../node_modules/bootstrap/dist/css/bootstrap.css">
+</head>
+<body style="margin: 0">
+<div id="root" style="display: flex;flex-direction: column;padding: 5px;">
+    <input type="file" id="file-filed" style="display: none;" v-on:change="fileFieldChangeHandler">
+    <div style="display: flex;flex-direction: row;align-items: center;">
+        <a href="#" class="btn btn-dark btn-sm" v-on:click="btnOpenFileClicked">
+            <span class="fa fa-file-import"></span> 选择文件
+        </a>
+        <div style="width: 5px;"></div>
+        <label style="margin: 0;">
+            格式：
+            <select v-model="selectedFormat">
+                <option value="dataurl">DataURL</option>
+                <option value="base64">Base64</option>
+            </select>
+        </label>
+        <span style="flex: 1;"></span>
+        <div class="btn-group" role="group">
+            <a href="#" class="btn btn-dark btn-sm" v-on:click="btnCopyClickedHandler">
+                <span class="fa fa-copy"></span> 拷贝
+            </a>
+            <a href="#" class="btn btn-dark btn-sm" v-on:click="btnSaveClickedHandler">
+                <span class="fa fa-save"></span> 保存
+            </a>
+            <a href="#" class="btn btn-dark btn-sm" v-on:click="btnDecodeAndSaveClickedHandler">
+                <span class="fa fa-exchange-alt"></span> 解码保存
+            </a>
+        </div>
+        <div style="width: 5px;"></div>
+        <a href="#" class="btn btn-dark btn-sm" v-on:click="btnDonateClickedHandler">
+            <span class="fa fa-donate"></span> 捐助
+        </a>
+    </div>
+    <div style="height: 5px;"></div>
+    <textarea readonly style="width: 100%;height: 500px;flex: 1;" v-model="output"></textarea>
+    <div class="text-success">{{status}}</div>
+</div>
+<script>
+    // You can also require other files to run in this process
+    require('./renderer.js');
+</script>
+</body>
+</html>
