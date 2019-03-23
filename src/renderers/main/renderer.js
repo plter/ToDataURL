@@ -6,8 +6,8 @@ window.$ = window.jQuery = require("jquery");
 require("bootstrap");
 const Vue = require("vue/dist/vue");
 const electron = require("electron");
-const LocalStorageManager = require("../../commons/LocalStorageManager");
-const SelectedFormat = require("../../commons/SelectedFormat");
+const LocalStorageManager = require("./LocalStorageManager");
+const SelectedFormat = require("./SelectedFormat");
 const fs = require("fs");
 const path = require("path");
 
@@ -18,10 +18,10 @@ let Main = {
     },
 
     initUI() {
+        this.initVueApp();
+
         this.root = document.querySelector("#root");
         this.resizeByWindow();
-
-        this.initVueApp();
 
         this.fileField = document.querySelector("#file-filed");
     },
@@ -100,6 +100,16 @@ let Main = {
                     } else {
                         this.status = "文本框中没有内容"
                     }
+                },
+                btnAboutClickedHandler: function () {
+                    let window = new electron.remote.BrowserWindow({
+                        parent: electron.remote.getCurrentWindow(),
+                        title: "关于",
+                        modal: true,
+                        width: 500,
+                        height: 300
+                    });
+                    window.loadFile(path.join(electron.remote.app.getAppPath(), "src", "renderers", "about", "about.html"));
                 }
             },
             watch: {
