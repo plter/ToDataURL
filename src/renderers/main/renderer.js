@@ -77,30 +77,6 @@ let Main = {
 
                     window.loadFile(path.join(electron.remote.app.getAppPath(), "src", "renderers", "donate", "donate.html"));
                 },
-                btnDecodeAndSaveClickedHandler: function () {
-                    if (this.output) {
-                        let path = electron.remote.dialog.showSaveDialog(electron.remote.getCurrentWindow(), {
-                            title: "保存文件"
-                        });
-                        if (path) {
-                            let dataText = this.output;
-                            if (this.selectedFormat == SelectedFormat.DATA_URL) {
-                                dataText = self.translateDataUrlToBase64(dataText);
-                            }
-                            try {
-                                fs.writeFileSync(path, Buffer.from(dataText, "base64"));
-                                this.status = "已保存";
-                            } catch (e) {
-                                console.log(e);
-                                this.status = "解码失败";
-                            }
-                        } else {
-                            this.status = "保存操作已取消";
-                        }
-                    } else {
-                        this.status = "文本框中没有内容"
-                    }
-                },
                 btnAboutClickedHandler: function () {
                     let window = new electron.remote.BrowserWindow({
                         parent: electron.remote.getCurrentWindow(),
