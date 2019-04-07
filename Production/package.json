@@ -5,7 +5,7 @@
   "main": "main.js",
   "scripts": {
     "start": "electron .",
-    "build": "electron-builder --mac --win"
+    "build": "electron-builder"
   },
   "repository": "https://github.com/plter/ToDataURL",
   "keywords": [
@@ -21,6 +21,9 @@
     "nsis": {
       "oneClick": false,
       "allowToChangeInstallationDirectory": true
+    },
+    "win": {
+      "target": "msi"
     }
   },
   "author": "GitHub",
