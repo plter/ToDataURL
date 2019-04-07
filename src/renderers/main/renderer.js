@@ -86,6 +86,15 @@ let Main = {
                         height: 300
                     });
                     window.loadFile(path.join(electron.remote.app.getAppPath(), "src", "renderers", "about", "about.html"));
+                },
+                dragoverHandler: function (e) {
+                    e.preventDefault();
+                },
+                dropHandler: function (e) {
+                    e.preventDefault();
+                    if (e.dataTransfer.files && e.dataTransfer.files.length) {
+                        self.readAndShowFileData(e.dataTransfer.files[0]);
+                    }
                 }
             },
             watch: {
@@ -102,6 +111,7 @@ let Main = {
     },
 
     readAndShowFileData(file) {
+        this._currentFile = file;
         if (file) {
             let reader = new FileReader();
             reader.onload = () => {

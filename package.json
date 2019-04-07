@@ -17,7 +17,11 @@
   ],
   "build": {
     "appId": "top.yunp.todataurl",
-    "productName": "ToDataURL"
+    "productName": "ToDataURL",
+    "nsis": {
+      "oneClick": false,
+      "allowToChangeInstallationDirectory": true
+    }
   },
   "author": "GitHub",
   "license": "CC0-1.0",
