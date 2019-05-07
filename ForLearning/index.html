@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html xmlns:v-on="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>ToDataURL</title>
+
+    <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="lib/fontawesome-free-5.8.1-web/css/all.css">
+</head>
+<body style="margin: 0">
+<div id="root" :style="{height:rootHeight+'px'}" style="display: flex;flex-direction: column;">
+    <div style="display: flex;flex-direction: row;">
+        <input style="display: none" type="file" id="file-input" v-on:change="fileInputChanged">
+        <a href="#" class="btn btn-dark btn-sm" v-on:click="btnOpenFileClicked"><span class="fa fa-file-import"></span>
+            选择文件</a>
+        <label>
+            格式：
+            <select v-model="dataType">
+                <option value="DataURL">DataURL</option>
+                <option value="Base64">Base64</option>
+            </select>
+        </label>
+        <div style="flex: 1;"></div>
+        <div class="btn-group" role="group">
+            <a href="#" class="btn btn-sm btn-dark" v-on:click="btnCopyClicked"><span class="fa fa-copy"></span> 拷贝</a>
+            <a href="#" class="btn btn-sm btn-dark" v-on:click="btnSaveClicked"><span class="fa fa-save"></span> 保存</a>
+        </div>
+        <div style="width: 5px;"></div>
+        <div class="btn-group" role="group">
+            <a href="#" class="btn btn-sm btn-dark" v-on:click="btnAboutClicked"><span class="fa fa-info"></span> 关于</a>
+            <a href="#" class="btn btn-sm btn-dark" v-on:click="btnDonateClicked"><span class="fa fa-donate"></span> 捐助</a>
+        </div>
+    </div>
+    <textarea style="width: 100%;flex: 1;" v-model="output"></textarea>
+</div>
+
+<script>
+    // You can also require other files to run in this process
+    require('./renderer.js')
+</script>
+</body>
+</html>
